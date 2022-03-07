@@ -1,9 +1,15 @@
+import { Routes, Route } from 'react-router-dom';
+import Home from './components/Home';
+import Details from './components/Details';
 import './App.scss';
 
 function App() {
   return (
     <div className="Apps">
-      <h1>Hello</h1>
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route path="/details" element={<Details />} />
+      </Routes>
     </div>
   );
 }
