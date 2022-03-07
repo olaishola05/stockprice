@@ -19,28 +19,26 @@ const Home = () => {
     <div>
       <h1>Hello</h1>
       <p>lorem</p>
-      {loading ? (
-        <div
-          style={{
-            width: '100%',
-            height: '100',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          {' '}
-          <BallTriangle color="#2BAD60" height="80" width="80" timeout={300} />
-        </div>
-      ) : (
-        <ul className="test">
-          {stocks.map((item) => (
-            <li key={item.symbol}>
-              <Link to="details">{item.symbol}</Link>
-            </li>
-          ))}
-        </ul>
-      )}
+      <div
+        style={{
+          width: '100%',
+          height: '100',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        {' '}
+        <BallTriangle color="#2BAD60" height="80" width="80" visible={loading} />
+      </div>
+
+      <ul className="test">
+        {stocks.map((item) => (
+          <li key={item.symbol}>
+            <Link to="details">{item.symbol}</Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
