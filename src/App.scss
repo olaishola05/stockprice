@@ -3,4 +3,24 @@
 
 body {
   width: 100%;
+  background-color: $bg-color;
+}
+
+.app-container {
+  h1 {
+    color: $font-color;
+    margin-top: 2rem;
+    text-align: center;
+  }
+
+  ul {
+    border: 1px solid red;
+    margin-top: 2rem;
+
+    li {
+      width: 100%;
+      padding: 20px;
+      border: 1px solid red;
+    }
+  }
 }
