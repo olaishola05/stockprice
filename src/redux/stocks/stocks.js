@@ -59,7 +59,8 @@ const stockPriceReducer = (state = initialState, action) => {
     case SEARCH:
       return {
         ...state,
-        search: [...state.data.filter((stock) => stock.symbol === action.payload)],
+        search: [...state.data.filter((stock) => stock.symbol.includes(action.payload))],
+        isSearching: !state.isSearching,
       };
 
     default:
