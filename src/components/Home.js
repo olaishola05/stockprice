@@ -5,28 +5,27 @@ import { useSelector, useDispatch } from 'react-redux';
 // import { BsArrowRightCircle } from 'react-icons/bs';
 import { BallTriangle } from 'react-loader-spinner';
 import screener from '../screener.jpg';
-import {
-  getStocksFromAPI,
-  brazil,
-  britain,
-  taiwan,
-  china,
-  AU,
-  NL,
-  canada,
-  ireland,
-  switz,
-  france,
-  america,
-} from '../redux/stocks/stocks';
+import { getStocksFromAPI } from '../redux/stocks/stocks';
 
 const Home = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.stocks);
-  const { data: stocks, loading } = state;
+  const { loading } = state;
+
+  const us = state.data.filter((item) => item.country === 'US');
+  const br = state.data.filter((item) => item.country === 'BR');
+  const gb = state.data.filter((item) => item.country === 'GB');
+  const tw = state.data.filter((item) => item.country === 'TW');
+  const cn = state.data.filter((item) => item.country === 'CN');
+  const ca = state.data.filter((item) => item.country === 'CA');
+  const au = state.data.filter((item) => item.country === 'AU');
+  const nl = state.data.filter((item) => item.country === 'NL');
+  const ie = state.data.filter((item) => item.country === 'IE');
+  const fr = state.data.filter((item) => item.country === 'FR');
+  const ch = state.data.filter((item) => item.country === 'CH');
 
   useEffect(() => {
-    if (stocks.length === 0) {
+    if (state.data.length === 0) {
       dispatch(getStocksFromAPI());
     }
   }, []);
@@ -51,19 +50,59 @@ const Home = () => {
             <BallTriangle color="#2BAD60" height="80" width="80" />
           </div>
         ) : (
-          <ul className="test">
-            <li>{america.length}</li>
-            <li>{brazil.length}</li>
-            <li>{AU.length}</li>
-            <li>{NL.length}</li>
-            <li>{britain.length}</li>
-            <li>{taiwan.length}</li>
-            <li>{china.length}</li>
-            <li>{canada.length}</li>
-            <li>{ireland.length}</li>
-            <li>{france.length}</li>
-            <li>{switz.length}</li>
-          </ul>
+          <div className="test">
+            <div>
+              <span>USA</span>
+              <p>{us.length}</p>
+            </div>
+
+            <div>
+              <span>Brazil</span>
+              <p>{br.length}</p>
+            </div>
+            <div>
+              <span>Great Britain</span>
+              <p>{gb.length}</p>
+            </div>
+
+            <div>
+              <span>Taiwan</span>
+              <p>{tw.length}</p>
+            </div>
+
+            <div>
+              <span>France</span>
+              <p>{fr.length}</p>
+            </div>
+
+            <div>
+              <span>China</span>
+              <p>{ch.length}</p>
+            </div>
+
+            <div>
+              <span>Ireland</span>
+              <p>{ie.length}</p>
+            </div>
+            <div>
+              <span>China</span>
+              <p>{cn.length}</p>
+            </div>
+            <div>
+              <span>Canada</span>
+              <p>{ca.length}</p>
+            </div>
+
+            <div>
+              <span>Australia</span>
+              <p>{au.length}</p>
+            </div>
+
+            <div>
+              <span>New Zealand</span>
+              <p>{nl.length}</p>
+            </div>
+          </div>
         )}
       </div>
     </div>
