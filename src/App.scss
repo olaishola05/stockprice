@@ -9,20 +9,37 @@ body {
 .app-container {
   h1 {
     color: $font-color;
-    margin-top: 2rem;
+    margin: 2rem;
     text-align: center;
   }
 
-  .stock-category {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+  .main {
+    h5 {
+      color: $font-color;
+      padding: 5px;
+      text-transform: uppercase;
+      background-color: $list-bg-color;
+    }
 
-    .name {
-      display: flex;
-      border: 1px solid red;
+    .stock-category {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
 
-      div {
+      .name {
         display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        color: $font-color;
+
+        div {
+          order: 1;
+        }
+
+        .link {
+          order: 2;
+          color: $font-color;
+        }
       }
     }
   }

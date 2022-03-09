@@ -1,28 +1,20 @@
+/* eslint-disable indent */
+/* eslint-disable react/jsx-indent */
 /* eslint-disable implicit-arrow-linebreak */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { BsArrowRightCircle } from 'react-icons/bs';
 import { BallTriangle } from 'react-loader-spinner';
 import screener from '../screener.jpg';
 import { getStocksFromAPI } from '../redux/stocks/stocks';
+import SearchForm from './Pages/SearchForm';
 
 const Home = () => {
+  const [isSearching] = useState(false);
   const dispatch = useDispatch();
   const state = useSelector((state) => state.stocks);
-  const { loading } = state;
-
-  const us = state.data.filter((item) => item.country === 'US');
-  const br = state.data.filter((item) => item.country === 'BR');
-  const gb = state.data.filter((item) => item.country === 'GB');
-  const tw = state.data.filter((item) => item.country === 'TW');
-  const cn = state.data.filter((item) => item.country === 'CN');
-  const ca = state.data.filter((item) => item.country === 'CA');
-  const au = state.data.filter((item) => item.country === 'AU');
-  const nl = state.data.filter((item) => item.country === 'NL');
-  const ie = state.data.filter((item) => item.country === 'IE');
-  const fr = state.data.filter((item) => item.country === 'FR');
-  const ch = state.data.filter((item) => item.country === 'CH');
+  const { loading, data: stocks, search } = state;
 
   useEffect(() => {
     if (state.data.length === 0) {
@@ -32,8 +24,8 @@ const Home = () => {
 
   return (
     <div className="app-container">
-      <h1>Stock Screener</h1>
       <img src={screener} alt="display background" />
+      <SearchForm />
       <div>
         {loading ? (
           <div
@@ -50,126 +42,37 @@ const Home = () => {
             <BallTriangle color="#2BAD60" height="80" width="80" />
           </div>
         ) : (
-          <div className="stock-category">
-            <div className="name">
-              <Link to="/details">
-                {' '}
-                <BsArrowRightCircle />
-              </Link>
-              <div>
-                <span>USA</span>
-                <p>{us.length}</p>
-              </div>
-            </div>
-
-            <div className="name">
-              <Link to="/details">
-                {' '}
-                <BsArrowRightCircle />
-              </Link>
-              <div>
-                <span>Brazil</span>
-                <p>{br.length}</p>
-              </div>
-            </div>
-
-            <div className="name">
-              <Link to="/details">
-                {' '}
-                <BsArrowRightCircle />
-              </Link>
-              <div>
-                <span>Great Britain</span>
-                <p>{gb.length}</p>
-              </div>
-            </div>
-
-            <div className="name">
-              <Link to="/details">
-                {' '}
-                <BsArrowRightCircle />
-              </Link>
-              <div>
-                <span>Taiwan</span>
-                <p>{tw.length}</p>
-              </div>
-            </div>
-
-            <div className="name">
-              <Link to="/details">
-                {' '}
-                <BsArrowRightCircle />
-              </Link>
-              <div>
-                <span>France</span>
-                <p>{fr.length}</p>
-              </div>
-            </div>
-
-            <div className="name">
-              <Link to="/details">
-                {' '}
-                <BsArrowRightCircle />
-              </Link>
-              <div>
-                <span>China</span>
-                <p>{ch.length}</p>
-              </div>
-            </div>
-
-            <div className="name">
-              <Link to="/details">
-                {' '}
-                <BsArrowRightCircle />
-              </Link>
-              <div>
-                <span>Ireland</span>
-                <p>{ie.length}</p>
-              </div>
-            </div>
-
-            <div className="name">
-              <Link to="/details">
-                {' '}
-                <BsArrowRightCircle />
-              </Link>
-              <div>
-                <span>China</span>
-                <p>{cn.length}</p>
-              </div>
-            </div>
-
-            <div className="name">
-              <Link to="/details">
-                {' '}
-                <BsArrowRightCircle />
-              </Link>
-              <div>
-                <span>Canada</span>
-                <p>{ca.length}</p>
-              </div>
-            </div>
-
-            <div className="name">
-              <Link to="/details">
-                {' '}
-                <BsArrowRightCircle />
-              </Link>
-              <div>
-                <span>Australia</span>
-                <p>{au.length}</p>
-              </div>
-            </div>
-            <div className="name">
-              <Link to="/details">
-                {' '}
-                <BsArrowRightCircle />
-              </Link>
-              <div>
-                <span>New Zealand</span>
-                <p>{nl.length}</p>
-              </div>
-            </div>
+          <div className="main">
+            <h5>All Stocks</h5>
+            <ul className="stock-category">
+              {isSearching === true
+                ? search.map((filterStock) => (
+                    <li key={filterStock.symbol} className="name">
+                      <Link to="/details" className="link">
+                        {' '}
+                        <BsArrowRightCircle />
+                      </Link>
+                      <div>
+                        <span>{filterStock.symbol}</span>
+                        <p>{filterStock.companyName}</p>
+                        <p>{`Market Cap: ${filterStock.marketCap}`}</p>
+                      </div>
+                    </li>
+                  ))
+                : stocks.map((stock) => (
+                    <li key={stock.symbol} className="name">
+                      <Link to="/details" className="link">
+                        {' '}
+                        <BsArrowRightCircle />
+                      </Link>
+                      <div>
+                        <span>{stock.symbol}</span>
+                        <p>{stock.companyName}</p>
+                        <p>{`Market Cap: ${stock.marketCap}`}</p>
+                      </div>
+                    </li>
+                  ))}
+            </ul>
           </div>
         )}
       </div>

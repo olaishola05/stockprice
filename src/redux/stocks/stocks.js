@@ -4,12 +4,14 @@ import axios from 'axios';
 const FETCH_STOCKS_SUCCESS = 'stock-price/stocks/FETCH_STOCKS_SUCCESS';
 const FETCH_STOCKS_FAIL = 'stock-price/stocks/FETCH_STOCKS_FAIL';
 const API_KEY = '3c4ce1f94bdb6914b93cb87ce827213b';
-const BASE_URL = `https://financialmodelingprep.com/api/v3/stock-screener?&apikey=${API_KEY}`;
+const BASE_URL = `https://financialmodelingprep.com/api/v3/stock-screener?limit=100&apikey=${API_KEY}`;
 const FETCH_START = 'stock-price/stocks/FETCH_START';
+const SEARCH = 'stock-price/stocks/SEARCH';
 
 const initialState = {
   error: '',
   data: [],
+  search: [],
   loading: false,
 };
 
@@ -25,6 +27,11 @@ const fetchStocksFail = (payload) => ({
 
 const fetchState = () => ({
   type: FETCH_START,
+});
+
+export const search = (payload) => ({
+  type: SEARCH,
+  payload,
 });
 
 export const getStocksFromAPI = () => async (dispatch) => {
@@ -48,6 +55,12 @@ const stockPriceReducer = (state = initialState, action) => {
 
     case FETCH_STOCKS_FAIL:
       return { ...state, loading: !state.loading, error: action.payload };
+
+    case SEARCH:
+      return {
+        ...state,
+        search: [...state.data.filter((stock) => stock.symbol === action.payload)],
+      };
 
     default:
       return state;
