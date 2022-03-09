@@ -1,8 +1,8 @@
 /* eslint-disable implicit-arrow-linebreak */
 import React, { useEffect } from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-// import { BsArrowRightCircle } from 'react-icons/bs';
+import { BsArrowRightCircle } from 'react-icons/bs';
 import { BallTriangle } from 'react-loader-spinner';
 import screener from '../screener.jpg';
 import { getStocksFromAPI } from '../redux/stocks/stocks';
@@ -50,57 +50,125 @@ const Home = () => {
             <BallTriangle color="#2BAD60" height="80" width="80" />
           </div>
         ) : (
-          <div className="test">
-            <div>
-              <span>USA</span>
-              <p>{us.length}</p>
+          <div className="stock-category">
+            <div className="name">
+              <Link to="/details">
+                {' '}
+                <BsArrowRightCircle />
+              </Link>
+              <div>
+                <span>USA</span>
+                <p>{us.length}</p>
+              </div>
             </div>
 
-            <div>
-              <span>Brazil</span>
-              <p>{br.length}</p>
-            </div>
-            <div>
-              <span>Great Britain</span>
-              <p>{gb.length}</p>
-            </div>
-
-            <div>
-              <span>Taiwan</span>
-              <p>{tw.length}</p>
+            <div className="name">
+              <Link to="/details">
+                {' '}
+                <BsArrowRightCircle />
+              </Link>
+              <div>
+                <span>Brazil</span>
+                <p>{br.length}</p>
+              </div>
             </div>
 
-            <div>
-              <span>France</span>
-              <p>{fr.length}</p>
+            <div className="name">
+              <Link to="/details">
+                {' '}
+                <BsArrowRightCircle />
+              </Link>
+              <div>
+                <span>Great Britain</span>
+                <p>{gb.length}</p>
+              </div>
             </div>
 
-            <div>
-              <span>China</span>
-              <p>{ch.length}</p>
+            <div className="name">
+              <Link to="/details">
+                {' '}
+                <BsArrowRightCircle />
+              </Link>
+              <div>
+                <span>Taiwan</span>
+                <p>{tw.length}</p>
+              </div>
             </div>
 
-            <div>
-              <span>Ireland</span>
-              <p>{ie.length}</p>
-            </div>
-            <div>
-              <span>China</span>
-              <p>{cn.length}</p>
-            </div>
-            <div>
-              <span>Canada</span>
-              <p>{ca.length}</p>
+            <div className="name">
+              <Link to="/details">
+                {' '}
+                <BsArrowRightCircle />
+              </Link>
+              <div>
+                <span>France</span>
+                <p>{fr.length}</p>
+              </div>
             </div>
 
-            <div>
-              <span>Australia</span>
-              <p>{au.length}</p>
+            <div className="name">
+              <Link to="/details">
+                {' '}
+                <BsArrowRightCircle />
+              </Link>
+              <div>
+                <span>China</span>
+                <p>{ch.length}</p>
+              </div>
             </div>
 
-            <div>
-              <span>New Zealand</span>
-              <p>{nl.length}</p>
+            <div className="name">
+              <Link to="/details">
+                {' '}
+                <BsArrowRightCircle />
+              </Link>
+              <div>
+                <span>Ireland</span>
+                <p>{ie.length}</p>
+              </div>
+            </div>
+
+            <div className="name">
+              <Link to="/details">
+                {' '}
+                <BsArrowRightCircle />
+              </Link>
+              <div>
+                <span>China</span>
+                <p>{cn.length}</p>
+              </div>
+            </div>
+
+            <div className="name">
+              <Link to="/details">
+                {' '}
+                <BsArrowRightCircle />
+              </Link>
+              <div>
+                <span>Canada</span>
+                <p>{ca.length}</p>
+              </div>
+            </div>
+
+            <div className="name">
+              <Link to="/details">
+                {' '}
+                <BsArrowRightCircle />
+              </Link>
+              <div>
+                <span>Australia</span>
+                <p>{au.length}</p>
+              </div>
+            </div>
+            <div className="name">
+              <Link to="/details">
+                {' '}
+                <BsArrowRightCircle />
+              </Link>
+              <div>
+                <span>New Zealand</span>
+                <p>{nl.length}</p>
+              </div>
             </div>
           </div>
         )}

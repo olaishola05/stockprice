@@ -13,14 +13,17 @@ body {
     text-align: center;
   }
 
-  ul {
-    border: 1px solid red;
-    margin-top: 2rem;
+  .stock-category {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 
-    li {
-      width: 100%;
-      padding: 20px;
+    .name {
+      display: flex;
       border: 1px solid red;
+
+      div {
+        display: flex;
+      }
     }
   }
 }
