@@ -16,19 +16,17 @@ const SearchForm = () => {
   }, [input]);
 
   return (
-    <div>
-      <form>
-        <label htmlFor="search">
-          <input
-            type="text"
-            name="search"
-            id="search"
-            value={input}
-            placeholder="Search by symbol e.g, APPL"
-            onChange={handleForm}
-          />
-        </label>
-      </form>
+    <div className="input-container">
+      <label htmlFor="search">
+        <input
+          type="text"
+          name="search"
+          id="search"
+          value={input}
+          placeholder="Search by symbol e.g, APPL"
+          onChange={handleForm}
+        />
+      </label>
     </div>
   );
 };

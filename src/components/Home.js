@@ -1,8 +1,6 @@
 /* eslint-disable object-curly-newline */
 /* eslint-disable arrow-body-style */
-/* eslint-disable indent */
-/* eslint-disable react/jsx-indent */
-/* eslint-disable implicit-arrow-linebreak */
+
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
