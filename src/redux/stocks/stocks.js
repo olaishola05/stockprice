@@ -1,3 +1,5 @@
+/* eslint-disable operator-linebreak */
+/* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable object-curly-newline */
 import axios from 'axios';
 
@@ -59,7 +61,13 @@ const stockPriceReducer = (state = initialState, action) => {
     case SEARCH:
       return {
         ...state,
-        search: [...state.data.filter((stock) => stock.symbol.includes(action.payload))],
+        search: [
+          ...state.data.filter(
+            (stock) =>
+              stock.symbol.toLowerCase().includes(action.payload.toLowerCase()) ||
+              stock.companyName.toLowerCase().includes(action.payload.toLowerCase()),
+          ),
+        ],
         isSearching: !state.isSearching,
       };
 

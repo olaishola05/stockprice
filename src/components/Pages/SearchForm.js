@@ -8,7 +8,7 @@ const SearchForm = () => {
 
   const handleForm = (e) => {
     const text = e.target.value;
-    setInput(text.toUpperCase());
+    setInput(text);
   };
 
   useEffect(() => {
