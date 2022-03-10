@@ -9,15 +9,20 @@ import { BallTriangle } from 'react-loader-spinner';
 import screener from '../screener.jpg';
 import { getStocksFromAPI } from '../redux/stocks/stocks';
 import SearchForm from './Pages/SearchForm';
+import TrendingStocks from './Pages/TrendingStocks';
+import { getTopGainersStocksFromAPI } from '../redux/stocks/trending';
 
 const Home = () => {
   const dispatch = useDispatch();
-  const state = useSelector((state) => state.stocks);
-  const { loading, data: stocks, search, isSearching } = state;
+  const state = useSelector((state) => state);
+  const { stocks, gainers } = state;
+  const { loading, data: screeners, search, isSearching } = stocks;
+  const { isLoading, data: trending } = gainers;
 
   useEffect(() => {
-    if (state.data.length === 0) {
+    if (state.stocks.data.length === 0 && state.gainers.data.length === 0) {
       dispatch(getStocksFromAPI());
+      dispatch(getTopGainersStocksFromAPI());
     }
   }, []);
 
@@ -44,16 +49,17 @@ const Home = () => {
   const StockRender = () => {
     return (
       <>
-        {stocks.map((stock) => (
+        {screeners.map((stock) => (
           <li key={stock.symbol} className="name">
-            <Link to="/details" className="link">
+            <Link to="/details/:symbol" className="link">
               {' '}
               <BsArrowRightCircle />
             </Link>
             <div>
               <span>{stock.symbol}</span>
               <p>{stock.companyName}</p>
-              <p>{`Market Cap: ${stock.marketCap}`}</p>
+              <p>{`M.Cap: ${stock.marketCap}`}</p>
+              <span>{`Vol. ${stock.volume}`}</span>
             </div>
           </li>
         ))}
@@ -63,10 +69,11 @@ const Home = () => {
 
   return (
     <div className="app-container">
+      {isLoading && <TrendingStocks trending={trending} />}
       <img src={screener} alt="display background" />
       <SearchForm />
       <div>
-        {loading ? (
+        {!loading ? (
           <div
             style={{
               width: '100%',

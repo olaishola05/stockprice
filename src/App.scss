@@ -1,6 +1,7 @@
 @import './scss/variables';
 @import './scss/resets';
 @import './scss/input';
+@import './scss/gainers';
 
 body {
   width: 100%;
@@ -12,6 +13,7 @@ body {
     color: $font-color;
     margin: 2rem;
     text-align: center;
+    font-size: 1.5rem;
   }
 
   .main {
@@ -29,17 +31,29 @@ body {
       .name {
         display: flex;
         justify-content: space-between;
-        align-items: center;
         padding: 10px;
         color: $font-color;
 
         div {
           order: 1;
+
+          p {
+            font-size: 0.9rem;
+            margin-bottom: 3px;
+          }
         }
 
         .link {
           order: 2;
           color: $font-color;
+        }
+
+        &:nth-child(4n-1) {
+          background-color: $list-bg-color-2;
+        }
+
+        &:nth-child(4n-2) {
+          background-color: $list-bg-color;
         }
       }
     }

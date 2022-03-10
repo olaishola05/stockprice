@@ -1,69 +1,62 @@
-/* eslint-disable indent */
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { Puff } from 'react-loader-spinner';
+/* eslint-disable react/jsx-one-expression-per-line */
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { CgArrowLongUp } from 'react-icons/cg';
+import { BsArrowRightCircle } from 'react-icons/bs';
+import PropTypes from 'prop-types';
+import { getRandom, randomGainer } from '../../redux/stocks/trending';
 
-const TrendingStocks = () => {
-  const state = useSelector((state) => state.stocks);
-  const { loading, trending } = state;
-  console.log(trending);
+const TrendingStocks = (props) => {
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state.gainers.item);
+  const { trending } = props;
+
+  useEffect(() => {
+    const random = randomGainer(trending);
+    dispatch(getRandom(random));
+  }, []);
 
   return (
     <div>
-      <h1>Top trending stocks</h1>
-
-      {loading ? (
-        <Puff color="#2BAD60" height="80" width="80" />
-      ) : (
+      <h1>Random Top gainers stocks</h1>
+      <div className="gainers">
+        <Link to="/details/:symbol" className="gainers-link">
+          {' '}
+          <BsArrowRightCircle />
+        </Link>
         <div>
-          <div>
-            <p>{trending[0].symbol}</p>
-            <p>{`$${trending[0].price}`}</p>
-            <p>{trending[0].companyName}</p>
-            <p>{`Volume: ${trending[0].volume}`}</p>
-            <p>{`Industry: ${trending[0].industry}`}</p>
-            <p>{`Market Cap: ${trending[0].marketCap}`}</p>
+          <div className="symbol">
+            <p>{state.symbol}</p>
+            <p>{state.name}</p>
           </div>
-
-          <div>
-            <p>{trending[0].symbol}</p>
-            <p>{`$${trending[0].price}`}</p>
-            <p>{trending[0].companyName}</p>
-            <p>{`Volume: ${trending[0].volume}`}</p>
-            <p>{`Industry: ${trending[0].industry}`}</p>
-            <p>{`Market Cap: ${trending[0].marketCap}`}</p>
+          <div className="price">
+            <p>{`Price: $${state.price}`}</p>
+            <p>
+              Change:
+              <CgArrowLongUp color="green" />
+              {state.change}
+            </p>
           </div>
-
-          <div>
-            <p>{trending[0].symbol}</p>
-            <p>{`$${trending[0].price}`}</p>
-            <p>{trending[0].companyName}</p>
-            <p>{`Volume: ${trending[0].volume}`}</p>
-            <p>{`Industry: ${trending[0].industry}`}</p>
-            <p>{`Market Cap: ${trending[0].marketCap}`}</p>
-          </div>
-
-          <div>
-            <p>{trending[0].symbol}</p>
-            <p>{`$${trending[0].price}`}</p>
-            <p>{trending[0].companyName}</p>
-            <p>{`Volume: ${trending[0].volume}`}</p>
-            <p>{`Industry: ${trending[0].industry}`}</p>
-            <p>{`Market Cap: ${trending[0].marketCap}`}</p>
-          </div>
-
-          <div>
-            <p>{trending[0].symbol}</p>
-            <p>{`$${trending[0].price}`}</p>
-            <p>{trending[0].companyName}</p>
-            <p>{`Volume: ${trending[0].volume}`}</p>
-            <p>{`Industry: ${trending[0].industry}`}</p>
-            <p>{`Market Cap: ${trending[0].marketCap}`}</p>
-          </div>
+          <p className="percentage">
+            Percentage: <CgArrowLongUp color="green" /> {state.changesPercentage}%
+          </p>
         </div>
-      )}
+      </div>
     </div>
   );
+};
+
+TrendingStocks.propTypes = {
+  trending: PropTypes.arrayOf(
+    PropTypes.shape({
+      symbol: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      change: PropTypes.number.isRequired,
+      changesPercentage: PropTypes.number.isRequired,
+    }).isRequired,
+  ).isRequired,
 };
 
 export default TrendingStocks;
