@@ -2,15 +2,14 @@
 /* eslint-disable arrow-body-style */
 
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { BsArrowRightCircle } from 'react-icons/bs';
 import { BallTriangle } from 'react-loader-spinner';
 import screener from '../screener.jpg';
 import { getStocksFromAPI } from '../redux/stocks/stocks';
 import SearchForm from './Pages/SearchForm';
 import TrendingStocks from './Pages/TrendingStocks';
 import { getTopGainersStocksFromAPI } from '../redux/stocks/trending';
+import { SearchRender, StockRender } from './views/Display';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -25,47 +24,6 @@ const Home = () => {
       dispatch(getTopGainersStocksFromAPI());
     }
   }, []);
-
-  const SearchRender = () => {
-    return (
-      <>
-        {search.map((filterStock) => (
-          <li key={filterStock.symbol} className="name">
-            <Link to="/details" className="link">
-              {' '}
-              <BsArrowRightCircle />
-            </Link>
-            <div>
-              <span>{filterStock.symbol}</span>
-              <p>{filterStock.companyName}</p>
-              <p>{`Market Cap: ${filterStock.marketCap}`}</p>
-            </div>
-          </li>
-        ))}
-      </>
-    );
-  };
-
-  const StockRender = () => {
-    return (
-      <>
-        {screeners.map((stock) => (
-          <li key={stock.symbol} className="name">
-            <Link to="/details/:symbol" className="link">
-              {' '}
-              <BsArrowRightCircle />
-            </Link>
-            <div>
-              <span>{stock.symbol}</span>
-              <p>{stock.companyName}</p>
-              <p>{`M.Cap: ${stock.marketCap}`}</p>
-              <span>{`Vol. ${stock.volume}`}</span>
-            </div>
-          </li>
-        ))}
-      </>
-    );
-  };
 
   return (
     <div className="app-container">
@@ -90,7 +48,13 @@ const Home = () => {
         ) : (
           <div className="main">
             <h5>All Stocks</h5>
-            <ul className="stock-category">{isSearching ? <StockRender /> : <SearchRender />}</ul>
+            <ul className="stock-category">
+              {isSearching ? (
+                <StockRender screeners={screeners} />
+              ) : (
+                <SearchRender search={search} />
+              )}
+            </ul>
           </div>
         )}
       </div>
