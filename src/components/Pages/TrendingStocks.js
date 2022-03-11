@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { CgArrowLongUp } from 'react-icons/cg';
 import { BsArrowRightCircle } from 'react-icons/bs';
 import PropTypes from 'prop-types';
@@ -9,6 +9,7 @@ import { getRandom, randomGainer } from '../../redux/stocks/trending';
 
 const TrendingStocks = (props) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const state = useSelector((state) => state.gainers.item);
   const { trending } = props;
 
@@ -21,10 +22,11 @@ const TrendingStocks = (props) => {
     <div>
       <h1>Random Top gainers stocks</h1>
       <div className="gainers">
-        <Link to="/details/:symbol" className="gainers-link">
-          {' '}
-          <BsArrowRightCircle />
-        </Link>
+        <BsArrowRightCircle
+          onClick={() => navigate(`/details/${state.symbol}`)}
+          className="gainers-link"
+        />
+
         <div>
           <div className="symbol">
             <p>{state.symbol}</p>

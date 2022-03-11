@@ -1,18 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { BsArrowRightCircle } from 'react-icons/bs';
 import PropTypes from 'prop-types';
 
 export const SearchRender = ({ search }) => {
-  console.log(search);
+  const navigate = useNavigate();
   return (
     <>
       {search.map((filterStock) => (
         <li key={filterStock.symbol} className="name">
-          <Link to="/details" className="link">
-            {' '}
-            <BsArrowRightCircle />
-          </Link>
+          <BsArrowRightCircle
+            onClick={() => navigate(`/details/${filterStock.symbol}`)}
+            className="link"
+          />
           <div>
             <span>{filterStock.symbol}</span>
             <p>{filterStock.companyName}</p>
@@ -26,15 +26,15 @@ export const SearchRender = ({ search }) => {
 };
 
 export const StockRender = ({ screeners }) => {
-  console.log(screeners);
+  const navigate = useNavigate();
   return (
     <>
       {screeners.map((stock) => (
         <li key={stock.symbol} className="name">
-          <Link to="/details/:symbol" className="link">
-            {' '}
-            <BsArrowRightCircle />
-          </Link>
+          <BsArrowRightCircle
+            onClick={() => navigate(`/details/${stock.symbol}`)}
+            className="link"
+          />
           <div>
             <span>{stock.symbol}</span>
             <p>{stock.companyName}</p>

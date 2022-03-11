@@ -1,34 +1,36 @@
 /* eslint-disable object-curly-newline */
-/* eslint-disable arrow-body-style */
-
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 import { BallTriangle } from 'react-loader-spinner';
-import screener from '../screener.jpg';
 import { getStocksFromAPI } from '../redux/stocks/stocks';
 import SearchForm from './Pages/SearchForm';
 import TrendingStocks from './Pages/TrendingStocks';
 import { getTopGainersStocksFromAPI } from '../redux/stocks/trending';
+import { fetchSymbolDetails } from '../redux/stocks/details';
 import { SearchRender, StockRender } from './views/Display';
 
-const Home = () => {
+const Home = ({ param }) => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
-  const { stocks, gainers } = state;
+  const { stocks, gainers, profile } = state;
   const { loading, data: screeners, search, isSearching } = stocks;
   const { isLoading, data: trending } = gainers;
+
+  console.log(profile);
+  console.log(param);
 
   useEffect(() => {
     if (state.stocks.data.length === 0 && state.gainers.data.length === 0) {
       dispatch(getStocksFromAPI());
       dispatch(getTopGainersStocksFromAPI());
+      dispatch(fetchSymbolDetails());
     }
-  }, []);
+  }, [param]);
 
   return (
     <div className="app-container">
-      {isLoading && <TrendingStocks trending={trending} />}
-      <img src={screener} alt="display background" />
+      {!isLoading && <TrendingStocks trending={trending} />}
       <SearchForm />
       <div>
         {!loading ? (
@@ -62,4 +64,7 @@ const Home = () => {
   );
 };
 
+Home.propTypes = {
+  param: PropTypes.string.isRequired,
+};
 export default Home;

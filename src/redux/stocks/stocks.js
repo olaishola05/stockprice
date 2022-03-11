@@ -59,6 +59,10 @@ const stockPriceReducer = (state = initialState, action) => {
       return { ...state, loading: !state.loading, error: action.payload };
 
     case SEARCH:
+      if (!action.payload) {
+        return { ...state };
+      }
+
       return {
         ...state,
         search: [
