@@ -5,7 +5,7 @@
 ![Stock Screener Home](./public/images/home.png)
 ![Stock Screener Details](./public/images/details.png)
 
-[Demo Link](Coming Soon)
+[Demo Link](https://stock-screenerapp.netlify.app/)
 
 > Stock Screener is a web application that pulls data from Financial Modelling API and display stocks for the day, Top gainers stocks and a detail page of each stock selected. Built using Frontend technologies including including React, Redux, React-Router-Dom, Sass etc.
 
