@@ -1,18 +1,14 @@
+/* eslint-disable arrow-body-style */
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import { BsArrowRightCircle } from 'react-icons/bs';
 import PropTypes from 'prop-types';
 
-export const SearchRender = ({ search }) => {
-  const navigate = useNavigate();
+export const SearchRender = ({ search, navigate }) => {
   return (
     <>
       {search.map((filterStock) => (
         <li key={filterStock.symbol} className="name">
-          <BsArrowRightCircle
-            onClick={() => navigate(`/details/${filterStock.symbol}`)}
-            className="link"
-          />
+          <BsArrowRightCircle onClick={() => navigate(filterStock.symbol)} className="link" />
           <div>
             <span>{filterStock.symbol}</span>
             <p>{filterStock.companyName}</p>
@@ -25,16 +21,12 @@ export const SearchRender = ({ search }) => {
   );
 };
 
-export const StockRender = ({ screeners }) => {
-  const navigate = useNavigate();
+export const StockRender = ({ screeners, navigate }) => {
   return (
     <>
       {screeners.map((stock) => (
         <li key={stock.symbol} className="name">
-          <BsArrowRightCircle
-            onClick={() => navigate(`/details/${stock.symbol}`)}
-            className="link"
-          />
+          <BsArrowRightCircle onClick={() => navigate(stock.symbol)} className="link" />
           <div>
             <span>{stock.symbol}</span>
             <p>{stock.companyName}</p>
@@ -57,6 +49,7 @@ SearchRender.propTypes = {
       volume: PropTypes.number.isRequired,
     }).isRequired,
   ).isRequired,
+  navigate: PropTypes.func.isRequired,
 };
 
 StockRender.propTypes = {
@@ -69,4 +62,5 @@ StockRender.propTypes = {
       volume: PropTypes.number.isRequired,
     }).isRequired,
   ).isRequired,
+  navigate: PropTypes.func.isRequired,
 };

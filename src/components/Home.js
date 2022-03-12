@@ -1,6 +1,7 @@
 /* eslint-disable object-curly-newline */
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { BallTriangle } from 'react-loader-spinner';
 import { getStocksFromAPI } from '../redux/stocks/stocks';
@@ -12,25 +13,29 @@ import { SearchRender, StockRender } from './views/Display';
 
 const Home = ({ param }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const state = useSelector((state) => state);
-  const { stocks, gainers, profile } = state;
+  const { stocks, gainers } = state;
   const { loading, data: screeners, search, isSearching } = stocks;
   const { isLoading, data: trending } = gainers;
 
-  console.log(profile);
   console.log(param);
 
   useEffect(() => {
     if (state.stocks.data.length === 0 && state.gainers.data.length === 0) {
       dispatch(getStocksFromAPI());
       dispatch(getTopGainersStocksFromAPI());
-      dispatch(fetchSymbolDetails());
     }
   }, [param]);
 
+  const handleNavigation = (symbol) => {
+    navigate(`/details/${symbol}`);
+    dispatch(fetchSymbolDetails(symbol));
+  };
+
   return (
     <div className="app-container">
-      {!isLoading && <TrendingStocks trending={trending} />}
+      {isLoading && <TrendingStocks trending={trending} navigate={handleNavigation} />}
       <SearchForm />
       <div>
         {!loading ? (
@@ -52,9 +57,9 @@ const Home = ({ param }) => {
             <h5>All Stocks</h5>
             <ul className="stock-category">
               {isSearching ? (
-                <StockRender screeners={screeners} />
+                <StockRender screeners={screeners} navigate={handleNavigation} />
               ) : (
-                <SearchRender search={search} />
+                <SearchRender search={search} navigate={handleNavigation} />
               )}
             </ul>
           </div>

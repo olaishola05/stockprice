@@ -39,13 +39,13 @@ export const fetchSymbolDetails = (symbol) => async (dispatch) => {
 const symbolDetailReducer = (state = profileState, action) => {
   switch (action.type) {
     case FETCH_START:
-      return { ...state, fetching: !state.fetching };
+      return { ...state };
 
     case FETCH_SYMBOL_SUCCESS:
-      return { ...state, data: [...action.payload], fetching: !state.fetching };
+      return { ...state, data: [...action.payload] };
 
     case FETCH_SYMBOL_SUCCESS_FAIL:
-      return { ...state, fetching: !state.fetching, error: action.payload };
+      return { ...state, error: action.payload };
 
     default:
       return state;
