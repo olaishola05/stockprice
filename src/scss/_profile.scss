@@ -1,0 +1,32 @@
+.company-info {
+  display: flex;
+  margin-top: 20px;
+  align-items: center;
+  flex-direction: column-reverse;
+
+  .details,
+  .exec {
+    flex: 1;
+    color: $font-color;
+  }
+
+  .details {
+    padding: 15px 3px;
+    margin-top: 10px;
+    align-items: center;
+    width: 350px;
+    background-color: $list-bg-color-2;
+  }
+
+  .exec {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $list-bg-color-2;
+
+    img {
+      width: 100px;
+      height: 100px;
+    }
+  }
+}

@@ -1,3 +1,5 @@
+/* eslint-disable operator-linebreak */
+/* eslint-disable object-curly-newline */
 /* eslint-disable indent */
 /* eslint-disable react/jsx-indent */
 /* eslint-disable prefer-destructuring */
@@ -13,38 +15,48 @@ const Card = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.profile);
 
-  console.log(id);
-
   useEffect(() => {
     dispatch(fetchSymbolDetails(id));
   }, [id]);
 
-  console.log(state.length);
   if (state.data.length > 0) {
-    console.log('hi', state.data[0]);
-    const { symbol, companyName, image } = state.data[0];
+    const { symbol, companyName, image, country, exchange, price, industry, volAvg, ceo, website } =
+      state.data[0];
     return (
-      <>
-        <div>
+      <div className="company-info">
+        <div className="details">
           <p>{symbol}</p>
-          <p>{companyName}</p>
-          <img src={image} alt={image} />
+          <p>{`Company: ${companyName}`}</p>
+          <p>{`Country: ${country}`}</p>
+          <p>{`Exchange: ${exchange}`}</p>
+          <p>{`Price: $${price}`}</p>
+          <p>{`Industry: ${industry}`}</p>
+          <p>{`Vol. Average ${volAvg}`}</p>
         </div>
-      </>
+        <div className="exec">
+          <img src={image} alt={image} />
+          <div>
+            <p>{`${ceo} CEO`}</p>
+            <p>{`Company Website: ${website}`}</p>
+          </div>
+        </div>
+      </div>
     );
   }
-  return <Puff />;
+  return (
+    <div
+      style={{
+        width: '100%',
+        height: '100',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: '10rem auto',
+      }}
+    >
+      <Puff color="#2BAD60" height="80" width="80" />
+    </div>
+  );
 };
-
-// Card.propTypes = {
-//   state: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       symbol: PropTypes.string.isRequired,
-//       price: PropTypes.number.isRequired,
-//       image: PropTypes.string.isRequired,
-//       companyName: PropTypes.string.isRequired,
-//     }).isRequired,
-//   ).isRequired,
-// };
 
 export default Card;

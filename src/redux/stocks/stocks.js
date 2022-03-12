@@ -17,7 +17,7 @@ const initialState = {
   loading: false,
 };
 
-const fetchStocks = (payload) => ({
+export const fetchStocks = (payload) => ({
   type: FETCH_STOCKS_SUCCESS,
   payload,
 });
