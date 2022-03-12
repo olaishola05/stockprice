@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable arrow-body-style */
 import React from 'react';
 import { BsArrowRightCircle } from 'react-icons/bs';
@@ -7,8 +9,8 @@ export const SearchRender = ({ search, navigate }) => {
   return (
     <>
       {search.map((filterStock) => (
-        <li key={filterStock.symbol} className="name">
-          <BsArrowRightCircle onClick={() => navigate(filterStock.symbol)} className="link" />
+        <li key={filterStock.symbol} className="name" onClick={() => navigate(filterStock.symbol)}>
+          <BsArrowRightCircle className="link" />
           <div>
             <span>{filterStock.symbol}</span>
             <p>{filterStock.companyName}</p>
@@ -25,8 +27,8 @@ export const StockRender = ({ screeners, navigate }) => {
   return (
     <>
       {screeners.map((stock) => (
-        <li key={stock.symbol} className="name">
-          <BsArrowRightCircle onClick={() => navigate(stock.symbol)} className="link" />
+        <li key={stock.symbol} className="name" onClick={() => navigate(stock.symbol)}>
+          <BsArrowRightCircle className="link" />
           <div>
             <span>{stock.symbol}</span>
             <p>{stock.companyName}</p>
