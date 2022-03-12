@@ -28,7 +28,9 @@ const fetchState = () => ({
 export const fetchSymbolDetails = (symbol) => async (dispatch) => {
   dispatch(fetchState());
   try {
-    const response = await axios(`https://financialmodelingprep.com/api/v3/profile/${symbol}?apikey=${API_KEY}`);
+    const response = await axios(
+      `https://financialmodelingprep.com/api/v3/profile/${symbol}?apikey=${API_KEY}`,
+    );
     dispatch(fetchSymbolSuccess(response.data));
   } catch (error) {
     const errorMsg = error.toString();
@@ -42,7 +44,7 @@ const symbolDetailReducer = (state = profileState, action) => {
       return { ...state };
 
     case FETCH_SYMBOL_SUCCESS:
-      return { ...state, data: [...action.payload] };
+      return { ...state, fetching: !state.fetching, data: [...action.payload] };
 
     case FETCH_SYMBOL_SUCCESS_FAIL:
       return { ...state, error: action.payload };

@@ -2,6 +2,7 @@
 @import './scss/resets';
 @import './scss/input';
 @import './scss/gainers';
+@import './scss/topbar';
 
 body {
   width: 100%;
@@ -46,6 +47,7 @@ body {
         .link {
           order: 2;
           color: $font-color;
+          cursor: 'pointer';
         }
 
         &:nth-child(4n-1) {

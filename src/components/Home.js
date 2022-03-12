@@ -2,7 +2,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { BallTriangle } from 'react-loader-spinner';
 import { getStocksFromAPI } from '../redux/stocks/stocks';
 import SearchForm from './Pages/SearchForm';
@@ -11,7 +10,7 @@ import { getTopGainersStocksFromAPI } from '../redux/stocks/trending';
 import { fetchSymbolDetails } from '../redux/stocks/details';
 import { SearchRender, StockRender } from './views/Display';
 
-const Home = ({ param }) => {
+const Home = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const state = useSelector((state) => state);
@@ -24,7 +23,7 @@ const Home = ({ param }) => {
       dispatch(getStocksFromAPI());
       dispatch(getTopGainersStocksFromAPI());
     }
-  }, [param]);
+  }, []);
 
   const handleNavigation = (symbol) => {
     navigate(`/details/${symbol}`);
@@ -54,7 +53,7 @@ const Home = ({ param }) => {
           <div className="main">
             <h5>All Stocks</h5>
             <ul className="stock-category">
-              {isSearching ? (
+              {!isSearching ? (
                 <StockRender screeners={screeners} navigate={handleNavigation} />
               ) : (
                 <SearchRender search={search} navigate={handleNavigation} />
@@ -67,7 +66,4 @@ const Home = ({ param }) => {
   );
 };
 
-Home.propTypes = {
-  param: PropTypes.string.isRequired,
-};
 export default Home;

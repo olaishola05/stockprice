@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  padding: 20px 0;
+  background-color: $list-bg-color-2;
+  justify-content: space-between;
+  align-items: center;
+
+  .header {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+
+    h1 {
+      font-size: 1.4rem;
+      color: white;
+    }
+  }
+
+  .icons {
+    display: flex;
+    margin-right: 10px;
+    color: white;
+    gap: 1rem;
+  }
+}
