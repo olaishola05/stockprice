@@ -91,3 +91,14 @@ Give a ⭐️ if you like this project!
 ## 📝 License
 
 This project is [MIT](https://opensource.org/licenses/MIT) licensed.
+
+## Acknowledgments
+
+- Hat tip to anyone whose code was used
+- Inspiration
+- etc
+
+## Credits
+
+Credits: Nelson Sakwa
+License: Nelson Sakwa
