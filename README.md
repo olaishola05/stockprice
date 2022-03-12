@@ -1,70 +1,93 @@
-# Getting Started with Create React App
+![](https://img.shields.io/badge/StockScreener-hotpink)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Stock Screener
 
-## Available Scripts
+![Stock Screener Home](./public/images/home.png)
+![Stock Screener Details](./public/images/details.png)
 
-In the project directory, you can run:
+[Demo Link](Coming Soon)
 
-### `npm start`
+> Stock Screener is a web application that pulls data from Financial Modelling API and display stocks for the day, Top gainers stocks and a detail page of each stock selected. Built using Frontend technologies including including React, Redux, React-Router-Dom, Sass etc.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Additional description about the project and its features.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Built With
 
-### `npm test`
+- Major languages
+- JSX
+- SASS & CSS
+- JavaScript
+- React
+- Redux
+- React-router
+- React Icons
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Technologies used
 
-### `npm run build`
+```bash
+- WebHint(Linting tool)
+- Jest(for testing)
+- Git(version control)
+- ESLint(JavaScript linting)
+- Stylelint(style linting)
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Getting Started
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To get a local copy up and running follow these simple example steps.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Prerequisites
 
-### `npm run eject`
+- A text editor(preferably Visual Studio Code)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Install
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- [Git](https://git-scm.com/downloads)
+- [Node](https://nodejs.org/en/download/)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Usage
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+#### Clone this repository
 
-## Learn More
+```bash
+git clone
+$ https://github.com/netman5/stockprice.git
+$ cd stockprice
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### Run project
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+$ npm install
+$ npm build
+$ npm test
+$ npm start
+```
 
-### Code Splitting
+#### Open page in browser
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+$ runs on http://localhost:3000/
+```
 
-### Analyzing the Bundle Size
+## Author
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+👤 **Ola Ishola**
 
-### Making a Progressive Web App
+- GitHub: [@netman5](https://github.com/netman5)
+- Twitter: [@Orlaish](https://twitter.com/Orlaish)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/ola-ishola/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 🤝 Contributing
 
-### Advanced Configuration
+Contributions, issues, and feature requests are welcome!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Feel free to check the [issues page](https://github.com/netman5/stockprice/issues).
 
-### Deployment
+## Show your support
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Give a ⭐️ if you like this project!
 
-### `npm run build` fails to minify
+## 📝 License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is [MIT](https://opensource.org/licenses/MIT) licensed.
