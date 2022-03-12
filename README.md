@@ -101,4 +101,5 @@ This project is [MIT](https://opensource.org/licenses/MIT) licensed.
 ## Credits
 
 Credits: Nelson Sakwa
+
 License: Nelson Sakwa
