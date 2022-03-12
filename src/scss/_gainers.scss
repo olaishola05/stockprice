@@ -1,0 +1,31 @@
+.gainers {
+  width: 88%;
+  background: $list-bg-color-2;
+  border-radius: 5px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  margin: 0 auto;
+  margin-bottom: 10px;
+
+  .gainers-link {
+    float: right;
+    margin-top: 5px;
+    padding-right: 5px;
+    color: $font-color;
+  }
+
+  div {
+    padding: 10px;
+    color: $font-color;
+
+    .symbol,
+    .price {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .percentage {
+      margin-left: 10px;
+    }
+  }
+}

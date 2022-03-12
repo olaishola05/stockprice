@@ -1,0 +1,135 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render App renders correctly 1`] = `
+<div
+  className="Apps"
+>
+  <div
+    className="app-container"
+  >
+    <div>
+      <h1>
+        Random Top gainers stocks
+      </h1>
+      <div
+        className="gainers"
+        onClick={[Function]}
+      >
+        <svg
+          className="gainers-link"
+          fill="currentColor"
+          height="1em"
+          stroke="currentColor"
+          strokeWidth="0"
+          style={
+            Object {
+              "color": undefined,
+            }
+          }
+          viewBox="0 0 16 16"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"
+            fillRule="evenodd"
+          />
+        </svg>
+        <div>
+          <div
+            className="symbol"
+          >
+            <p />
+            <p />
+          </div>
+          <div
+            className="price"
+          >
+            <p>
+              Price: $undefined
+            </p>
+            <p>
+              Change:
+              <svg
+                color="green"
+                fill="none"
+                height="1em"
+                stroke="currentColor"
+                strokeWidth="0"
+                style={
+                  Object {
+                    "color": "green",
+                  }
+                }
+                viewBox="0 0 24 24"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12.0321 1.01712L7.75751 5.22761L9.161 6.65246L11.0197 4.82165L10.9644 22.9768L12.9644 22.9829L13.0195 4.86974L14.8177 6.69525L16.2425 5.29175L12.0321 1.01712Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </p>
+          </div>
+          <p
+            className="percentage"
+          >
+            Percentage: 
+            <svg
+              color="green"
+              fill="none"
+              height="1em"
+              stroke="currentColor"
+              strokeWidth="0"
+              style={
+                Object {
+                  "color": "green",
+                }
+              }
+              viewBox="0 0 24 24"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12.0321 1.01712L7.75751 5.22761L9.161 6.65246L11.0197 4.82165L10.9644 22.9768L12.9644 22.9829L13.0195 4.86974L14.8177 6.69525L16.2425 5.29175L12.0321 1.01712Z"
+                fill="currentColor"
+              />
+            </svg>
+             
+            %
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      className="input-container"
+    >
+      <label
+        htmlFor="search"
+      >
+        <input
+          id="search"
+          name="search"
+          onChange={[Function]}
+          placeholder="Search by symbol e.g, APPL"
+          type="text"
+          value=""
+        />
+      </label>
+    </div>
+    <div>
+      <div
+        className="main"
+      >
+        <h5>
+          All Stocks
+        </h5>
+        <ul
+          className="stock-category"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

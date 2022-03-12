@@ -1,0 +1,20 @@
+.input-container {
+  width: 100%;
+  border: 1px solid red;
+
+  input {
+    width: 100%;
+    padding: 5px;
+    border: none;
+    border-radius: 3px;
+    margin-bottom: 4px;
+
+    &:focus {
+      border: none;
+    }
+
+    &::placeholder {
+      color: $list-bg-color;
+    }
+  }
+}
