@@ -19,8 +19,6 @@ const Home = ({ param }) => {
   const { loading, data: screeners, search, isSearching } = stocks;
   const { isLoading, data: trending } = gainers;
 
-  console.log(param);
-
   useEffect(() => {
     if (state.stocks.data.length === 0 && state.gainers.data.length === 0) {
       dispatch(getStocksFromAPI());
