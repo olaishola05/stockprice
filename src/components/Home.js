@@ -7,7 +7,6 @@ import { getStocksFromAPI } from '../redux/stocks/stocks';
 import SearchForm from './Pages/SearchForm';
 import TrendingStocks from './Pages/TrendingStocks';
 import { getTopGainersStocksFromAPI } from '../redux/stocks/trending';
-import { fetchSymbolDetails } from '../redux/stocks/details';
 import { SearchRender, StockRender } from './views/Display';
 
 const Home = () => {
@@ -27,7 +26,6 @@ const Home = () => {
 
   const handleNavigation = (symbol) => {
     navigate(`/details/${symbol}`);
-    dispatch(fetchSymbolDetails(symbol));
   };
 
   return (

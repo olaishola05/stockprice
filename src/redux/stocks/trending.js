@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const FETCH_TOP_GAINERS_STOCKS_SUCCESS = 'stock-price/stocks/FETCH_TOP_GAINERS_STOCKS_SUCCESS';
 const FETCH_TOP_GAINERS_STOCKS_FAIL = 'stock-price/stocks/FETCH_TOP_GAINERS_STOCKS_FAIL';
-const API_KEY = '3c4ce1f94bdb6914b93cb87ce827213b';
+const API_KEY = 'ccdf8ccdd1e7c1ce0b485d11b55d46ad';
 const BASE_URL = `https://financialmodelingprep.com/api/v3/stock_market/gainers?apikey=${API_KEY}`;
 const FETCH_START = 'stock-price/stocks/FETCH_START';
 

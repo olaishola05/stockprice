@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -19,8 +21,8 @@ const TrendingStocks = (props) => {
   return (
     <div>
       <h1>Random Top gainers stocks</h1>
-      <div className="gainers">
-        <BsArrowRightCircle onClick={() => navigate(state.symbol)} className="gainers-link" />
+      <div className="gainers" onClick={() => navigate(state.symbol)}>
+        <BsArrowRightCircle className="gainers-link" />
 
         <div>
           <div className="symbol">
