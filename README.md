@@ -2,7 +2,8 @@
 
 # Stock Screener
 
-![Stock Screener UI](./public/)
+![Stock Screener Home](./public/images/home.png)
+![Stock Screener Details](./public/images/details.png)
 
 [Demo Link](Coming Soon)
 
