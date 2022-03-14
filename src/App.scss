@@ -7,7 +7,7 @@
 
 body {
   width: 100%;
-  background-color: $bg-color;
+  background-color: $list-bg-color;
 }
 
 .app-container {
@@ -57,6 +57,39 @@ body {
 
         &:nth-child(4n-2) {
           background-color: $list-bg-color;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .main-container {
+    width: 85%;
+    margin: 0 auto;
+
+    .app-container {
+      .main {
+        .stock-category {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+          gap: 1rem;
+          margin: 4px;
+          padding: 10px;
+          box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+          .name {
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            &:hover {
+              background-color: hsl(0, 0%, 100%);
+              color: $list-bg-color;
+              cursor: pointer;
+              transform: scaleY(1.1);
+              .link {
+                color: $list-bg-color;
+              }
+            }
+          }
         }
       }
     }
